@@ -40,7 +40,9 @@ python manage.py runserver
 
 ## Usage
 
-After setting up the server, navigate to `http://127.0.0.1:8000` in your web browser to access the Intelligent Book Management System dashboard. From here, you can manage books, borrowers, reservations, and view reports.
+After setting up the server, navigate to `http://127.0.0.1:8000` in your web browser to access the Intelligent Book Management System dashboard. 
+From here, you can manage books, borrowers, reservations, and view reports.
+Please run ./build.sh to create the docker setup
 
 ## Contributing
 
