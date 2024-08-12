@@ -10,15 +10,6 @@ security = HTTPBasic()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-# async def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
-#     correct_username = "admin"
-#     correct_password = "password"
-#     if (credentials.username != correct_username or
-#             credentials.password != correct_password):
-#         raise HTTPException(status_code=401, detail="Invalid credentials")
-#     return credentials.username
-#
-
 async def get_user(db: AsyncSession, username: str):
     result = await db.execute(select(User).filter(User.username == username))
     return result.scalar_one_or_none()
@@ -33,8 +24,8 @@ def get_password_hash(password):
 
 
 async def authenticate(
-    credentials: HTTPBasicCredentials = Depends(security),
-    db: AsyncSession = Depends(get_async_session)
+        credentials: HTTPBasicCredentials = Depends(security),
+        db: AsyncSession = Depends(get_async_session)
 ):
     user = await get_user(db, credentials.username)
     if not user or not verify_password(credentials.password, user.hashed_password):
