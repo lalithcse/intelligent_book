@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  db:
+    container_name: db
+    build:
+      dockerfile: dockerfiles/Dockerfile_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: SendHub101
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+  app:
+    container_name: intelligent-book
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile_app
+      args:
+        GITHUB_PAT: ${GITHUB_PAT}
+        APP_NAME: app
+    image: book-service:latest
+    # user: "ubuntu:ubuntu"
+    # depends_on:
+    #   - base-image
+    ports:
+      - "5000:5000"
+    # env_file:
+    #   - ./scripts/sendhub.sh
+    environment:
+      - APP_NAME=inforeach
+      - BASE_URL=http://dev.sendhub.com
+      # - DATABASE_URL=postgresql+asyncpg://postgres:SendHub101@10.1.1.73/intelligent
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres101!@intelligent.c9ww8y86u075.us-east-1.rds.amazonaws.com/intelligent
+    # entrypoint: ["/app/cp_to_local.sh"] 
+    volumes:
+      - /opt/sendhub/intelligent_book/:/code/
+    # develop:
+    #   watch:
+    #     - action: sync
+    #       path: .
+    #       target: /code
+    restart: always
