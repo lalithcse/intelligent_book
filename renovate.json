@@ -1,27 +1,40 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
-    "schedule": ["at any time"],
-    "packageRules": [
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "matchCurrentVersion": "!/^0/",
-        "automerge": true
-      }
-    ],
-    "dependencyDashboard": true,
-    "updateNotScheduled": true,
-    "onboarding": false,
-    "requireConfig": "optional",
-    "rangeStrategy": "auto",
-    "dependencyDashboardAutoclose": false,
-    "dependencyDashboardTitle": "Dependencies Dashboard",
-    "commitMessagePrefix": "⬆️",
-    "semanticCommits": "enabled",
-    "prHourlyLimit": 10,
-    "branchPrefix": "deps/",
-    "labels": ["dependencies"],
-    "assignees": ["lalithcse"],
-    "reviewers": ["lalithcse"],
-    "timezone": "America/New_York"
-  }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "at any time"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "dependencyDashboard": true,
+  "updateNotScheduled": true,
+  "onboarding": false,
+  "requireConfig": "optional",
+  "rangeStrategy": "auto",
+  "dependencyDashboardAutoclose": false,
+  "dependencyDashboardTitle": "Dependencies Dashboard",
+  "commitMessagePrefix": "⬆️",
+  "semanticCommits": "enabled",
+  "prHourlyLimit": 10,
+  "branchPrefix": "deps/",
+  "labels": [
+    "dependencies"
+  ],
+  "assignees": [
+    "lalithcse"
+  ],
+  "reviewers": [
+    "lalithcse"
+  ],
+  "timezone": "America/New_York"
+}
