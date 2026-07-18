@@ -64,7 +64,7 @@ starlette==0.37.2
 sympy==1.13.1
 threadpoolctl==3.5.0
 tokenizers==0.19.1
-torch==2.4.0
+torch==2.13.0
 tqdm==4.66.4
 transformers==4.43.3
 triton==3.0.0
