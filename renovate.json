@@ -1,6 +1,6 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base"],
+    "extends": ["config:recommended"],
     "schedule": ["at any time"],
     "packageRules": [
       {
@@ -9,13 +9,15 @@
         "automerge": true
       }
     ],
-    "dependencyDashboard": true,
+    "dependencyDashboard": {
+        "enabled": true,
+        "autoclose": false,
+        "title": "Dependencies Dashboard"
+    },
     "updateNotScheduled": true,
     "onboarding": false,
     "requireConfig": "optional",
     "rangeStrategy": "auto",
-    "dependencyDashboardAutoclose": false,
-    "dependencyDashboardTitle": "Dependencies Dashboard",
     "commitMessagePrefix": "⬆️",
     "semanticCommits": "enabled",
     "prHourlyLimit": 10,
